@@ -1,6 +1,6 @@
-# Line Reader Plus
-Processes stream chunks into lines using a separator and adds extra info: start/end byte position and row number. Very useful 
-if after reading the lines you want to modify them. 
+# Line Reader Plus - know where your lines are located.
+Processes stream chunks into lines using a separator and adds extra info: start/end byte position and row number. Very 
+useful if after reading the lines you want to modify them. 
 
 ## Install
 ```bash
@@ -10,21 +10,21 @@ npm install line-reader-plus
 ## Basic Usage
 ```javascript
 const fs = require("fs")
-const LineReaderPlus = require("line-reader-plus")
+const LineReaderPlus = require("line-reader-plus")  
 
-fs.createReadStream(pathToYourFile)
+fs.createReadStream("pathToYourFile")
     .pipe(new LineReaderPlus())
     .on("data", (line) => {
         // line = {value: String, start: Int, end: Int, row: Int)            
     })
 ```
 
-## Custom Usage
+## Custom Options
 ```javascript
 const fs = require("fs")
-const LineReaderPlus = require("line-reader-plus")
+const LineReaderPlus = require("line-reader-plus")  
 
-fs.createReadStream(pathToYourFile)
+fs.createReadStream("pathToYourFile")
     .pipe(new LineReaderPlus("SeparateMe", "ascii", {highWaterMark: 8}))
     .on("data", (line) => {
         // line = {value: String, start: Int, end: Int, row: Int)           
@@ -50,8 +50,9 @@ RAW (no pipes)     x 7.55 ops/sec ±2.74% (40 runs sampled)
 *No extra info, just splitting into lines.
  
 What do you know, only ~40% slower than raw and faster than well established 
-[split2](https://www.npmjs.com/package/split2). Now of course, if you're running a HDD, results might not have any 
-differences due to slowness of the disk. But don't take my word for it, run the benchmark yourself: `npm run benchmark`
+[split2](https://www.npmjs.com/package/split2). But take the results with a grain of salt. There's plenty of OS level 
+caching going on behind the scenes. Which means that speed might be quite off. To check it yourself, 
+run: `npm run benchmark`
  
 ## Testing
 ```bash
