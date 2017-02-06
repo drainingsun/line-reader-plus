@@ -1,0 +1,42 @@
+{
+    "name": "line-reader-plus",
+    "description": "Read text files with stream pipes and parse into lines with start/end byte position and row number.",
+    "keywords": [
+        "file",
+        "stream",
+        "read",
+        "line",
+        "split",
+        "transform",
+        "bytelength",
+        "position"
+    ],
+    "version": "0.1.0",
+    "main": "libs",
+    "engines": {
+        "node": ">=6"
+    },
+    "devDependencies": {
+        "benchmark": "2.1.3",
+        "beautify-benchmark": "0.2.4",
+        "eslint": "3.14.1",
+        "mocha": "3.2.0",
+        "should": "11.2.0",
+        "split2": "2.1.1"
+    },
+    "scripts": {
+        "benchmark": "node benchmarks",
+        "lint": "eslint ./ || true",
+        "test": "mocha tests"
+    },
+    "author": "Draining Sun",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/drainingsun/line-reader-plus.git"
+    },
+    "bugs": {
+        "url": "https://github.com/drainingsun/line-reader-plus/issues",
+        "email": "drainingsun@protonmail.com"
+    }
+}
